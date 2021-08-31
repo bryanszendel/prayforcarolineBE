@@ -1,24 +1,13 @@
-
-exports.up = function(knex) {
-  return knex.schema
-    .createTable('items', items => {
-      items.increments();
-      items
-        .string('name', 255)
-        .notNullable()
-        .unique();
-      items
-        .text('description').notNullable();
-      items
-        .string('category').notNullable();
-      items
-        .text('image');
-      items
-        .timestamps(); // will create two columns: created_at, updated_at
-    })
+exports.up = function (knex) {
+  return knex.schema.createTable("slot", (slot) => {
+    slot.increments();
+    slot.string("person_name", 255).notNullable();
+    slot.integer("hour").notNullable();
+    slot.integer("minutes").notNullable();
+    slot.timestamps(); // will create two columns: created_at, updated_at
+  });
 };
 
-exports.down = function(knex, Promise) {
-  return knex.schema
-    .dropTableIfExists('items')
+exports.down = function (knex, Promise) {
+  return knex.schema.dropTableIfExists("items");
 };

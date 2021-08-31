@@ -1,10 +1,10 @@
 exports.seed = function (knex) {
   // Deletes ALL existing entries
-  return knex("items")
+  return knex("slot")
     .del()
     .then(function () {
       // Inserts seed entries
-      return knex("items").insert([
+      return knex("slot").insert([
         { hour: "00", minutes: "00" },
         { hour: "00", minutes: "15" },
         { hour: "00", minutes: "30" },

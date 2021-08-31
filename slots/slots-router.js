@@ -44,11 +44,11 @@ router.put("/:id", validateItemId, (req, res) => {
   const id = req.params.id;
   const update = req.body;
   Items.edit(id, update)
-    .then((updatedItemId) => {
-      return Items.findById(id);
-    })
+    // .then((updatedItemId) => {
+    //   return Items.findById();
+    // })
     .then((res) => {
-      res.status(201).json(res.data);
+      res.status(201).json(update);
     })
     .catch((err) => {
       res.status(500).json({ message: "Error updating the item." });

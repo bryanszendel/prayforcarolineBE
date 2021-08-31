@@ -20,8 +20,8 @@ function add(item) {
   return db("slot").insert(item);
 }
 
-function edit(id, item) {
-  return db("slot").update(item).where("id", id);
+function edit(id, person_name) {
+  return db("slot").update({ person_name }).where("id", id);
 }
 
 function remove(id) {

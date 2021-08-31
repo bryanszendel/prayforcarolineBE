@@ -42,13 +42,13 @@ router.post("/", validatePostReqBody, (req, res) => {
 
 router.put("/:id", validateItemId, (req, res) => {
   const id = req.params.id;
-  const updated = req.body;
-  Items.edit(id, updated)
-    .then((updatedItemId) => {
-      return Items.findById(updatedItemId);
-    })
-    .then((updated) => {
-      res.status(201).json(updated);
+  const person_name = req.body.person_name;
+  Items.edit(id, person_name)
+    // .then((updatedItemId) => {
+    //   return Items.findById(updatedItemId);
+    // })
+    .then((res) => {
+      res.status(201).json(Items.findById(id));
     })
     .catch((err) => {
       res.status(500).json({ message: "Error updating the item." });

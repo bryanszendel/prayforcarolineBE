@@ -13,6 +13,18 @@ router.get("/", (req, res) => {
     });
 });
 
+router.get("/day/:day", (req, res) => {
+  const day = req.params.day;
+  Items.findByDay(day)
+    .then((items) => {
+      res.status(200).json(items);
+    })
+    .catch((err) => {
+      res.status(500).json({ message: "Error retrieving the items." });
+      console.log(err);
+    });
+});
+
 router.get("/:id", validateItemId, (req, res) => {
   const id = req.params.id;
   Items.findById(id)

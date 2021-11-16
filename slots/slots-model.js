@@ -3,6 +3,7 @@ const db = require("../database/db-config.js");
 module.exports = {
   find,
   findById,
+  findByDay,
   add,
   edit,
   remove,
@@ -14,6 +15,10 @@ function find() {
 
 function findById(id) {
   return db("slot").where("id", id).first();
+}
+
+function findByDay(day) {
+  return db("slot").where("day", day);
 }
 
 function add(item) {
